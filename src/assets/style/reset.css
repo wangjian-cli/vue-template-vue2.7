@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  box-sizing: border-box;
+  font-size: 12px;
+  font-family: SimSun, Avenir, Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  height: 100%;
+  width: 100%;
+}
+html,
+body {
+  min-height: 692px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background-color: #000000;
+}
+html,
+body,
+div,
+span {
+  box-sizing: border-box;
+}
+/* ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #484848;
+  border-radius: 10px;
+} */

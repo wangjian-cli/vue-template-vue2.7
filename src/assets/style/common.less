@@ -1,0 +1,203 @@
+.clamp(@num:1) when(@num=1) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.clamp(@num:1) when(@num>1) {
+  overflow: hidden;
+  /* 将对象作为弹性伸缩盒子模型显示 。 */
+  display: -webkit-box;
+  /* 限制在一个块元素显示的文本的行数，即行数设置 */
+  -webkit-line-clamp: @num;
+  /* 规定框从上向下垂直排列子元素 */
+  -webkit-box-orient: vertical;
+}
+@keyframes hx-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hx-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hx-slide-fade-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -80%, 0);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hx-slide-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -80%, 0);
+  }
+}
+
+@keyframes hx-slide-up-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 80%, 0);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hx-slide-up-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 80%, 0);
+  }
+}
+
+@keyframes hx-slide-down-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -80%, 0);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hx-slide-down-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -80%, 0);
+  }
+}
+
+@keyframes hx-slide-left-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(80%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hx-slide-left-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(80%, 0, 0);
+  }
+}
+
+@keyframes hx-slide-right-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(-80%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hx-slide-right-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(-80%, 0, 0);
+  }
+}
+
+.hx-fade {
+  &-enter-active {
+    animation: hx-fade-in 0.3s both ease;
+  }
+
+  &-leave-active {
+    animation: hx-fade-out 0.3s both ease;
+  }
+}
+
+.hx-slide-fade {
+  &-enter-active {
+    animation: hx-slide-fade-enter 0.3s both ease;
+  }
+
+  &-leave-active {
+    animation: hx-slide-fade-out 0.3s both ease;
+  }
+}
+
+.hx-slide-up {
+  &-enter-active {
+    animation: hx-slide-up-enter 0.3s both ease-in-out;
+  }
+
+  &-leave-active {
+    animation: hx-slide-up-out 0.3s both ease-in-out;
+  }
+}
+
+.hx-slide-down {
+  &-enter-active {
+    animation: hx-slide-down-enter 0.3s both ease-in-out;
+  }
+
+  &-leave-active {
+    animation: hx-slide-down-out 0.3s both ease-in-out;
+  }
+}
+
+.hx-slide-left {
+  &-enter-active {
+    animation: hx-slide-left-enter 0.3s both ease-in-out;
+  }
+
+  &-leave-active {
+    animation: hx-slide-left-out 0.3s both ease-in-out;
+  }
+}
+
+.hx-slide-right {
+  &-enter-active {
+    animation: hx-slide-right-enter 0.3s both ease-in-out;
+  }
+
+  &-leave-active {
+    animation: hx-slide-right-out 0.3s both ease-in-out;
+  }
+}

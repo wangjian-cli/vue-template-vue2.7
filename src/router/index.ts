@@ -1,50 +1,52 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Layout from '/@/views/Layout/index.vue'
-Vue.use(VueRouter)
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import { getOS, setTitle, androidCanBackProtocol } from '@/utils/tools';
+import { Os } from '@/types/toolsType';
+Vue.use(VueRouter);
 
-export const constantRoutes = [
+const routes = [
+  // 首页
   {
-    path: '/',
-    name: 'MainPage',
-    meta: {
-      icon: 'el-icon-setting',
-      title: '首页',
-    },
-    component: Layout,
-    redirect: '/homePage',
-    children: [
-      {
-        path: '/homePage',
-        name: 'HomePage',
-        meta: {
-          title: '首页',
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "HomePage" */ '../views/HomePage/HomePage.vue'
-          ),
-      },
-      {
-        path: '/testPage',
-        name: 'TestPage',
-        meta: {
-          title: '测试页',
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "TestPage" */ '../views/TestPage/TestPage.vue'
-          ),
-      },
-    ],
+    path: '/home',
+    name: 'Home',
+    component: () => import('@/views/Home.vue')
   },
-]
+  // 兜底路由
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/home'
+  }
+];
 
-const createRouter = () =>
-  new VueRouter({
-    routes: constantRoutes,
-  })
+const createRouter = () => {
+  const router: VueRouter = new VueRouter({
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      return (
+        savedPosition || {
+          x: 0,
+          y: 0
+        }
+      );
+    }
+  });
+  // 安全版本
+  const securityVersion = 5;
+  router.beforeEach((to, from, next) => {
+    if (
+      getOS().sys === Os.iphone ||
+      (getOS().sys === Os.gphone &&
+        getOS().version &&
+        +(getOS().version as string).split('.')[0] >= securityVersion)
+    ) {
+      to.meta?.title && setTitle(to.meta.title);
+    }
+    androidCanBackProtocol();
+    next();
+  });
+  return router;
+};
 
-const router = createRouter()
+const router = createRouter();
 
-export default router
+export default router;

@@ -1,56 +1,55 @@
-import { splitVendorChunkPlugin, UserConfigExport, ConfigEnv } from 'vite'
-import vue from '@vitejs/plugin-vue2'
-import legacy from '@vitejs/plugin-legacy'
-import Components from 'unplugin-vue-components/vite'
-import { ElementUiResolver } from 'unplugin-vue-components/resolvers'
-import { viteMockServe } from 'vite-plugin-mock'
-import path from 'path'
+import { splitVendorChunkPlugin, UserConfigExport, ConfigEnv } from 'vite';
+import vue from '@vitejs/plugin-vue2';
+import legacy from '@vitejs/plugin-legacy';
+import Components from 'unplugin-vue-components/vite';
+import { resolve } from 'path';
 
 export default ({ command }: ConfigEnv): UserConfigExport => {
   return {
-    server: {
-      host: true,
-      port: 28847,
-    },
     plugins: [
       vue(),
-      viteMockServe({
-        mockPath: 'mock',
-        localEnabled: command === 'serve',
-        prodEnabled: false,
-        injectCode: `
-          import { setupProdMockServer } from './mockProdServer';
-          setupProdMockServer();
-        `,
-      }),
       splitVendorChunkPlugin(),
       legacy({
         targets: ['defaults', 'ie >= 11'],
-        additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+        additionalLegacyPolyfills: ['regenerator-runtime/runtime']
       }),
-      Components({
-        resolvers: [ElementUiResolver()],
-      }),
+      Components()
     ],
+    // 全局导入common.less
+    css: {
+      preprocessorOptions: {
+        less: {
+          additionalData: '@import "@/assets/style/common.less";'
+        }
+      }
+    },
+    server: {
+      port: 4000,
+      open: true,
+      cors: true,
+      host: 'dev.10jqka.com.cn',
+      // 设置代理，根据我们项目实际情况配置
+      proxy: {
+        '/api': {
+          target: 'http://127.0.0.1:5000',
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path: string) => path.replace('/api/', '/')
+        }
+      }
+    },
     build: {
       target: 'es2015',
-      chunkSizeWarningLimit: 2000,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'element-ui': ['element-ui'],
-          },
-        },
-      },
+      chunkSizeWarningLimit: 2000
     },
+    // 路径简称
     resolve: {
-      alias: [
-        // /@/xxxx => src/xxxx
-        {
-          find: /\/@\//,
-          replacement: path.resolve('src') + '/',
-        },
-      ],
-    },
-  }
-}
+      alias: {
+        '@': resolve(__dirname, 'src'),
+        _u: resolve(__dirname, 'src/utils')
+        // _t: resolve(__dirname, 'src/utils/tools.ts'),
+        // _a: resolve(__dirname, 'src/api/index.ts')
+      }
+    }
+  };
+};

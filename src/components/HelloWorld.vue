@@ -1,17 +1,14 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
-  </div>
+  <div>{{ msg }}</div>
 </template>
+
 <script setup lang="ts">
-defineProps({
-  msg: {
-    type: String,
-  },
-})
-</script>
-<style scoped>
-.read-the-docs {
-  color: #888;
+interface Props {
+  msg?: string;
 }
-</style>
+withDefaults(defineProps<Props>(), {
+  msg: '你好'
+});
+</script>
+
+<style scoped lang="less"></style>
