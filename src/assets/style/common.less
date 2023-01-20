@@ -1,9 +1,9 @@
-.clamp(@num:1) when(@num=1) {
+.ellipsis(@num:1) when(@num=1) {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.clamp(@num:1) when(@num>1) {
+.ellipsis(@num:1) when(@num>1) {
   overflow: hidden;
   /* 将对象作为弹性伸缩盒子模型显示 。 */
   display: -webkit-box;
