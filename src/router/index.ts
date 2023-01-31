@@ -21,7 +21,7 @@ const routes = [
 const createRouter = () => {
   const router: VueRouter = new VueRouter({
     routes,
-    scrollBehavior(to, from, savedPosition) {
+    scrollBehavior(to: any, from: any, savedPosition: any) {
       return (
         savedPosition || {
           x: 0,
@@ -32,7 +32,7 @@ const createRouter = () => {
   });
   // 安全版本
   const securityVersion = 5;
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((to: { meta: { title: string; }; }, from: any, next: () => void) => {
     if (
       getOS().sys === Os.iphone ||
       (getOS().sys === Os.gphone &&
