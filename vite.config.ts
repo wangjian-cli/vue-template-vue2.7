@@ -1,17 +1,27 @@
-import { splitVendorChunkPlugin, UserConfigExport, ConfigEnv } from 'vite';
+import { splitVendorChunkPlugin, UserConfigExport, ConfigEnv, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue2';
 import legacy from '@vitejs/plugin-legacy';
 import Components from 'unplugin-vue-components/vite';
+import { createHtmlPlugin } from 'vite-plugin-html';
 import { resolve } from 'path';
 
-export default ({ command }: ConfigEnv): UserConfigExport => {
+export default ({ mode }: ConfigEnv): UserConfigExport => {
+  const env = loadEnv(mode, process.cwd());
   return {
+    base: env.VITE_APP_BASE_URL,
     plugins: [
       vue(),
       splitVendorChunkPlugin(),
       legacy({
-        targets: ['defaults', 'ie >= 11'],
+        targets: ['defaults', 'Android > 44', 'Safari > 8', 'iOS > 8'],
         additionalLegacyPolyfills: ['regenerator-runtime/runtime']
+      }),
+      createHtmlPlugin({
+        inject: {
+          data: {
+            ...env
+          }
+        }
       }),
       Components()
     ],
@@ -40,7 +50,8 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
     },
     build: {
       target: 'es2015',
-      chunkSizeWarningLimit: 2000
+      chunkSizeWarningLimit: 2000,
+      sourcemap: env.VITE_APP_CURRENTMODE !== 'release'
     },
     // 路径简称
     resolve: {
