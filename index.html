@@ -15,8 +15,8 @@
 
   <body>
     <!-- skywalking监控 -->
-    <script src="//s.thsi.cn/hxapp/m/base/js/skywalking.1.1.20.min.js"></script>
-    <script src="//s.thsi.cn/cb?js/m/v2.13/common/;user.js;cookie.js;basic.js;bridge.js"></script>
+    <script src="//s.thsi.cn/hxapp/m/base/js/skywalking.1.1.20.min.js" crossorigin="anonymous"></script>
+    <script src="//s.thsi.cn/cb?js/m/v2.13/common/;user.js;cookie.js;basic.js;bridge.js" crossorigin="anonymous"></script>
     <script>
       try {
         const ENV = '<%- VITE_APP_CURRENTMODE %>';
@@ -46,8 +46,9 @@
     <!-- 基础库 -->
     <script src="//s.thsi.cn/cd/ths-frontend-common-lib-container/v1.2.6/business/stat.js" crossorigin="anonymous"></script>
     <script src="//s.thsi.cn/cd/ths-frontend-infra-jssdk-pod/1.0.5/thsc-base-jssdk.js" crossorigin="anonymous"></script>
-    <!-- iphoneX 适配 -->
     <script src="//s.thsi.cn/cd/ths-frontend-common-lib-container/v1.3.15/common/vue/2.7.14.min.js" crossorigin="anonymous"></script>
+     <!-- 动态域名切换 -->
+     <script src="//s.thsi.cn/cd/ths-frontend-common-lib-container/v1.3.20/business/dynamicDomain.js" crossorigin="anonymous"></script>
     <script type="module" src="/src/main.ts" crossorigin="anonymous"></script>
   </body>
 </html>

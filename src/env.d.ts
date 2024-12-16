@@ -30,4 +30,7 @@ declare interface Window {
   ClientMonitor: {
     reportFrameErrors: (arg0: Options, arg1?: ErrInfo) => void;
   };
+  dynamicDomain: {
+    exchangeHost: (arg0: string, arg1: (arga: string) => void) => void;
+  };
 }

@@ -204,6 +204,15 @@ const errorReport = ({ name, message, stack }: ErrorReportParam) => {
     }
   );
 };
+
+// 获取动态域名
+function getUrlByPromise(configUrl: string) {
+  return new Promise(resolve => {
+    window.dynamicDomain.exchangeHost(configUrl, function (url: string) {
+      resolve(url);
+    });
+  });
+}
 export {
   DatePlus,
   getOS,
@@ -214,5 +223,6 @@ export {
   jumpBy2804,
   throttle,
   debounce,
-  errorReport
+  errorReport,
+  getUrlByPromise
 };

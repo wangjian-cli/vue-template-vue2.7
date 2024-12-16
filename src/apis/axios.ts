@@ -1,4 +1,5 @@
 import Axios, { AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios';
+import { getUrlByPromise, errorReport } from '@/utils/tools';
 const statusNum = 200;
 
 function getAxios(withCredentials: boolean): AxiosInstance {
@@ -13,12 +14,21 @@ function getAxios(withCredentials: boolean): AxiosInstance {
 
   // 前置拦截器（发起请求之前的拦截）
   axios.interceptors.request.use(
-    (response: AxiosRequestConfig) =>
-      /**
-       * 根据你的项目实际情况来对 config 做处理
-       * 这里对 config 不做任何处理，直接返回
-       */
-      response,
+    async (config: AxiosRequestConfig) => {
+      try {
+        if (config.url) {
+          // @ts-ignore
+          config.url = await getUrlByPromise(config.url);
+        }
+        return config;
+      } catch (error: unknown) {
+        errorReport({
+          name: `获取动态域名报错${(error as Error).name}`,
+          message: (error as Error).message,
+          stack: (error as Error).stack
+        });
+      }
+    },
     (error: any) => Promise.reject(error)
   );
 
