@@ -11,7 +11,7 @@ const directives = {
 };
 
 Object.entries(directives).forEach(([name, directives]) => {
-  Vue.directives(name, directives);
+  Vue.directive(name, directives);
 });
 
 new Vue({
