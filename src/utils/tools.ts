@@ -1,4 +1,4 @@
-import { Os, ErrorReportParam } from '@/types/toolsType';
+import { Os, ErrorReportParam } from '@/types/tools.d';
 class DatePlus extends Date {
   constructor(args: any) {
     args ? super(args) : super();

@@ -1,4 +1,4 @@
-enum Os {
+export enum Os {
   iphone = 'iphone',
   gphone = 'gphone'
 }
@@ -8,4 +8,3 @@ interface ErrorReportParam {
   stack: string | undefined;
 }
 export type { ErrorReportParam };
-export { Os };

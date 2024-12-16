@@ -15,7 +15,10 @@
     "paths": {
       "@/*": ["./src/*"]
       // "_a": ["./src/api/index.ts"]
-    }
+    },
+    "types": [
+      "vue"
+    ]
   },
   "include": [
     "src/**/*.ts",

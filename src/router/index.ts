@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { getOS, setTitle, androidCanBackProtocol } from '@/utils/tools';
-import { Os } from '@/types/toolsType';
+import { Os } from '@/types/tools.d';
 Vue.use(VueRouter);
 
 const routes = [
@@ -32,7 +32,7 @@ const createRouter = () => {
   });
   // 安全版本
   const securityVersion = 5;
-  router.beforeEach((to: { meta: { title: string; }; }, from: any, next: () => void) => {
+  router.beforeEach((to: { meta: { title: string } }, _from: any, next: () => void) => {
     if (
       getOS().sys === Os.iphone ||
       (getOS().sys === Os.gphone &&

@@ -9,7 +9,7 @@ const successFn = (response: AxiosResponse<any>, resolve: (value: any) => void, 
     errorReport({
       name: '接口errorCode报错',
       message: `url:${config?.url},code:${data?.status_code},params:${JSON.stringify(params)}`,
-      stack: data
+      stack: `接口返回为${JSON.stringify(data)}`
     });
   }
 };

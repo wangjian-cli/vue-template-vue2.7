@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0,viewport-fit=cover " />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <title>${titlePlaceholder}</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite + Vue2.7 + TS</title>
-  <script src="//s.thsi.cn/cb?js/m/v2.13/common/;user.js;cookie.js;basic.js;bridge.js;rem.js;zepto.js"></script>
-</head>
-
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+  <body>
+    <!-- skywalking监控 -->
+    <script src="//s.thsi.cn/hxapp/m/base/js/skywalking.1.1.20.min.js"></script>
+    <script src="//s.thsi.cn/cb?js/m/v2.13/common/;user.js;cookie.js;basic.js;bridge.js"></script>
+    <script>
+      try {
+        const ENV = '<%- VITE_APP_CURRENTMODE %>';
+        const collector =
+          ENV === 'release'
+            ? 'https://apm.hexin.cn/skywalking-web'
+            : 'https://khtest.10jqka.com.cn/skywalking-web';
+        ClientMonitor.register({
+          collector: collector, // 采集器服务，注意区分环境和域名
+          rate: 1, // 性能采集比例，业务流量小可以设为1
+          service: '${servicePlaceholder}', // 业务标识
+          pagePath: location.hash.replace('#', '') || '/root',
+          serviceVersion: window.getPlatform() + '_mobile_' + (window.getAppVersion() || 'others'), // 平台(iOS/Android/PC)+版本，格式：设备标识_业务标识_版本标识
+          autoTracePerf: false,
+          enableSPA: false,
+          useFmp: false, // 是否记录首屏加载信息
+          noTrace: true
+        });
+      } catch (e) {
+        window.console.log(e);
+      }
+    </script>
+    <div id="app"></div>
+    <noscript>
+      <strong>很抱歉当前环境不支持 JavaScript 导致程序无法运行</strong>
+    </noscript>
+    <!-- 基础库 -->
+    <script src="//s.thsi.cn/cd/ths-frontend-common-lib-container/v1.2.6/business/stat.js"></script>
+    <script src="//s.thsi.cn/cd/ths-frontend-infra-jssdk-pod/1.0.5/thsc-base-jssdk.js"></script>
+    <!-- iphoneX 适配 -->
+    <script src="//s.thsi.cn/cd/ths-frontend-common-lib-container/v1.3.15/common/vue/2.7.14.min.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

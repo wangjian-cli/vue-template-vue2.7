@@ -94,7 +94,7 @@ strong {
 /*------------------@ global HTML Element style--------------------*/
 body {
   font-family: 'PingFang Medium', 'PingFang SC', 'Source Han Sans', sans-serif;
-  font-size: 0.28rem;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1.2em;
   min-width: 320px;
