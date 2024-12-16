@@ -1,6 +1,6 @@
 import { DirectiveBinding } from 'vue';
 import Cover from '@/assets/images/cover.png';
-import { errorReport } from '_t';
+import { errorReport } from '@/utils/tools';
 export default {
   bind(el: HTMLImageElement, binding: DirectiveBinding<string>) {
     // 图片报错
