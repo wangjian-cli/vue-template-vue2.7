@@ -17,10 +17,9 @@
   },
   "devDependencies": {
     "@atom/atom-ui": "latest",
-    "@atom/auto-import-resolver": "^0.0.1",
+    "@atom/auto-import-resolver": "latest",
     "@atom/b2c-tokens": "latest",
     "@types/node": "^18.7.14",
-    "@types/vue": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "@vitejs/plugin-legacy": "^2.0.1",

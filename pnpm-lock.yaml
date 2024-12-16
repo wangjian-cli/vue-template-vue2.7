@@ -20,10 +20,10 @@ devDependencies:
     specifier: latest
     version: 1.17.23(vue@2.7.14)
   '@atom/auto-import-resolver':
-    specifier: ^0.0.1
+    specifier: latest
     version: 0.0.1
   '@atom/b2c-tokens':
-    specifier: ^0.0.14
+    specifier: latest
     version: 0.0.14
   '@types/node':
     specifier: ^18.7.14
