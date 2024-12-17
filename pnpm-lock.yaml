@@ -1,7 +1,7 @@
 lockfileVersion: '6.0'
 
 settings:
-  autoInstallPeers: true
+  autoInstallPeers: false
   excludeLinksFromLockfile: false
 
 dependencies:
@@ -28,9 +28,6 @@ devDependencies:
   '@types/node':
     specifier: ^18.7.14
     version: 18.15.11
-  '@types/vue':
-    specifier: ^2.0.0
-    version: 2.0.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.37.0
     version: 5.57.1(@typescript-eslint/parser@5.57.1)(eslint@8.37.0)(typescript@4.9.5)
@@ -132,7 +129,7 @@ packages:
       '@better-scroll/core': 2.5.1
       '@exposure-lib/core': 2.0.3
       '@exposure-lib/polyfill': 2.0.3
-      '@exposure-lib/vue2': 2.0.3(@exposure-lib/core@2.0.3)(vue@2.7.14)
+      '@exposure-lib/vue2': 2.0.3(vue@2.7.14)
       '@vant/popperjs': 1.3.0
       '@vue/babel-helper-vue-jsx-merge-props': 1.4.0
       resize-observer-polyfill: 1.5.1
@@ -1471,10 +1468,9 @@ packages:
     resolution: {integrity: sha512-k7QQeux3yQZWN0FmtBylz12s1jYO0yRVHA1RtAYb+EdsgM6IOc9N1Chl22AW4xZ8ld4LFpuNCMa438Wd9GXm9g==}
     dev: true
 
-  /@exposure-lib/vue2@2.0.3(@exposure-lib/core@2.0.3)(vue@2.7.14):
+  /@exposure-lib/vue2@2.0.3(vue@2.7.14):
     resolution: {integrity: sha512-jfStrysLHPQDtFN24h0SLwXaIb0hXJGQPbg4Y3/cfuIIsn3N0Y/bP3J8bROUAgGd2Crbf7hWZ0smN4E0s1a0uw==}
     peerDependencies:
-      '@exposure-lib/core': '>=2.0.0'
       vue: '>=2.6.11'
     dependencies:
       '@exposure-lib/core': 2.0.3
@@ -1515,7 +1511,7 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       '@jridgewell/set-array': 1.2.1
-      '@jridgewell/sourcemap-codec': 1.4.14
+      '@jridgewell/sourcemap-codec': 1.5.0
       '@jridgewell/trace-mapping': 0.3.25
     dev: true
 
@@ -1560,7 +1556,7 @@ packages:
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
-      '@jridgewell/sourcemap-codec': 1.4.14
+      '@jridgewell/sourcemap-codec': 1.5.0
     dev: true
 
   /@king-fisher/apis@0.5.12-beta01:
@@ -1668,13 +1664,6 @@ packages:
 
   /@types/semver@7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
-    dev: true
-
-  /@types/vue@2.0.0:
-    resolution: {integrity: sha512-WDElkBv/o4lVwu6wYHB06AXs4Xo2fwDjJUpvPRc1QQdzkUSiGFjrYuSCy8raxLE5FObgKq8ND7R5gSZTFLK60w==}
-    deprecated: This is a stub types definition for vuejs (https://github.com/vuejs/vue). vuejs provides its own type definitions, so you don't need @types/vue installed!
-    dependencies:
-      vue: 2.7.14
     dev: true
 
   /@types/wechat-miniprogram@3.4.8:
