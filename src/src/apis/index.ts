@@ -13,6 +13,6 @@ const prefixOptions: Record<Env, any> = {
     apigate: 'apigate.10jqka.com.cn'
   }
 };
-const prefix = prefixOptions[import.meta.env.VUE_APP_CURRENTMODE as Env];
+const prefix = prefixOptions[import.meta.env.VITE_APP_CURRENTMODE as Env];
 export const reqTest = (params: TestReq): Promise<TestRes['data']> =>
   req.get(`${prefix.apigate}/xxx`, { ...params });
