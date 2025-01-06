@@ -4,13 +4,13 @@ import { TestReq, TestRes } from '@/types/api.d';
 
 const prefixOptions: Record<Env, any> = {
   dev: {
-    apigate: 'apigate-test.10jqka.com.cn'
+    apigate: '//apigate-test.10jqka.com.cn'
   },
   test: {
-    apigate: 'apigate-test.10jqka.com.cn'
+    apigate: '//apigate-test.10jqka.com.cn'
   },
   release: {
-    apigate: 'apigate.10jqka.com.cn'
+    apigate: '//apigate.10jqka.com.cn'
   }
 };
 const prefix = prefixOptions[import.meta.env.VITE_APP_CURRENTMODE as Env];
