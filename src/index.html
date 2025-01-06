@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0,viewport-fit=cover "
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0,viewport-fit=cover"
     />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-touch-fullscreen" content="yes" />
@@ -28,8 +28,8 @@
     ></script>
     <script>
       try {
-        const ENV = '<%- VITE_APP_CURRENTMODE %>';
-        const collector =
+        var ENV = '<%- VITE_APP_CURRENTMODE %>';
+        var collector =
           ENV === 'release'
             ? 'https://apm.hexin.cn/skywalking-web'
             : 'https://khtest.10jqka.com.cn/skywalking-web';
